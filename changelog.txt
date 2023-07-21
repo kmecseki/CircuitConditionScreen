@@ -1,0 +1,5 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 5 July 2023
+  Features:
+    - Initial release of a mod, that shows OK or Fault on a screen based on circuit conditions.
