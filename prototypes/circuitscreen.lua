@@ -24,10 +24,9 @@ empty_sprite = {
   circuit_screen.icon_size = 64
   circuit_screen.flags = {"placeable-player", "player-creation", "placeable-neutral", "placeable-enemy"}
   circuit_screen.minable = {mining_time = 0.1, result = "circuit-screen"}
-  circuit_screen.collision_box = {{-1, -0.40}, {1, 0.40}} -- needs tested
-  circuit_screen.selection_box = {{-1, -0.40}, {1, 0.40}} -- needs to be tested
+  circuit_screen.collision_box = {{-1, -0.40}, {1, 0.40}}
+  circuit_screen.selection_box = {{-1, -0.40}, {1, 0.40}}
   circuit_screen.apply_runtime_tint = false
-  --circuit_screen.corpse = "__CircuitConditionScreen__/graphics/corpse/attempt1_screen_corpse2_image_64.png"
   circuit_screen.corpse = "small-remnants"
   circuit_screen.dying_explosion = "pump-explosion" -- test explosion
   circuit_screen.circuit_wire_connection_point = circuit_connector_definitions["circuit-screen"].points

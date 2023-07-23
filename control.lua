@@ -42,7 +42,7 @@ end
 
 local function on_tick(event)
     
-    -- Check if players present and if yes, update flis.
+    -- Check if players present and if yes, update units.
     if players_present then
         if game.tick % settings.global["update_every_x_tickcs"].value == 0 then
                 csupdate()
@@ -81,7 +81,7 @@ local function placedcs(placed_entity)
 end
 
 local function register_css()
-    rendering.clear("CircuitConditionScreen") -- this may need to be the more global name
+    rendering.clear("CircuitConditionScreen") 
     for _,surface in pairs(game.surfaces) do
         for _,cs in pairs(surface.find_entities_filtered({name = "circuit-screen"})) do
             global.css[cs.unit_number] = cs
