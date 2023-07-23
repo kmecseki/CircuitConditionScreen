@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 23 July 2023
+  Minor fixes:
+    - Swapped red and green conditions.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 5 July 2023
   Features:
-    - Initial release of a mod, that shows OK or Fault on a screen based on circuit conditions.
+    - Initial release of a mod, that shows a red or green lamp based on the status of a circuit conditions.

@@ -21,11 +21,11 @@ local function csupdate()
                     local behavior = cs.get_control_behavior()
                     if behavior and behavior['circuit_condition'] then
                         if behavior.circuit_condition.fulfilled then
-                            rendering.set_sprite(global.cstop[global.csindex], "circuit-cond-OK")
-                            rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
-                        else
                             rendering.set_sprite(global.cstop[global.csindex], "emptysprite")
                             rendering.set_sprite(global.csbottom[global.csindex], "circuit-cond-Fault")
+                        else
+                            rendering.set_sprite(global.cstop[global.csindex], "circuit-cond-OK")
+                            rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
                         end
                     end
                 else
