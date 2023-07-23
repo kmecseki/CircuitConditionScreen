@@ -10,6 +10,14 @@ local function players_present()
     return players_present
 end
 
+local function signal_is_blank(sigid)
+    if sigid == nil or (sigid.type == "item" and sigid.name == nil) then
+        return true
+    else
+        return false
+    end
+end
+
 local function csupdate()
 
     if next(global.css)~=nil then
@@ -19,6 +27,8 @@ local function csupdate()
                 if cs.valid then
                     local surface = cs.surface
                     local behavior = cs.get_control_behavior()
+                    local networkred = cs.get_circuit_network(defines.wire_type.red)
+                    local networkgreen = cs.get_circuit_network(defines.wire_type.green)
                     if behavior and behavior['circuit_condition'] then
                         if behavior.circuit_condition.fulfilled then
                             rendering.set_sprite(global.cstop[global.csindex], "emptysprite")
@@ -26,6 +36,14 @@ local function csupdate()
                         else
                             rendering.set_sprite(global.cstop[global.csindex], "circuit-cond-OK")
                             rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
+                        end
+                        if networkred == nil and networkgreen == nil then
+                            rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
+                            rendering.set_sprite(global.cstop[global.csindex], "emptysprite")
+                        end
+                        if signal_is_blank(behavior.circuit_condition.condition.first_signal) then
+                            rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
+                            rendering.set_sprite(global.cstop[global.csindex], "emptysprite")
                         end
                     end
                 else
@@ -54,7 +72,7 @@ local function create_textbox(cs, surface)
 
     global.cstop[cs.unit_number] = rendering.draw_sprite({
             sprite = "emptysprite",
-            target = {cs.position.x-0.5,cs.position.y-0.0},
+            target = {cs.position.x-0.0,cs.position.y-0.0},
             surface = surface,
             tint = {r=0.2,  g=0.8,  b=0.2, a=0.99},
             x_scale = 1,
@@ -62,7 +80,8 @@ local function create_textbox(cs, surface)
             })
     global.csbottom[cs.unit_number] = rendering.draw_sprite({
             sprite = "emptysprite",
-            target = {cs.position.x+0.5,cs.position.y+0.0},
+            --target = {cs.position.x+0.5,cs.position.y+0.0},
+            target = {cs.position.x-0.0,cs.position.y+0.0},
             surface = surface,
             tint = {r=0.9,  g=0.1,  b=0.1, a=0.85},
             x_scale = 1,

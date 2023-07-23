@@ -1,5 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.2.0
+Version: 0.2.2
+Date: 23 July 2023
+  Features
+    - Added glow around the lamp.
+  Minor fixes:
+    - Lamp turns off when disconnected.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.1
 Date: 23 July 2023
   Minor fixes:
     - Swapped red and green conditions.
