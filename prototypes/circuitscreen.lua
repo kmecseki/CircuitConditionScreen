@@ -1,4 +1,5 @@
 require("circuit-connector-sprites")
+require ("util")
 
 empty_sprite = { 
     filename = "__core__/graphics/empty.png", 
@@ -6,27 +7,31 @@ empty_sprite = {
     frame_count = 1 
   }
 
+  circuit_connector_definitions["circuit-screen"] = circuit_connector_definitions.create
+  (
+    universal_connector_template,
+    {
+      { variation = 31,
+      main_offset = util.by_pixel(25.5, 5.5),
+      shadow_offset = util.by_pixel(26.0, 6.5),
+      show_shadow = true },
+    }
+  )
+
   circuit_screen = util.table.deepcopy(data.raw["programmable-speaker"]["programmable-speaker"])
   circuit_screen.name = "circuit-screen"
-  circuit_screen.icon = "__CircuitConditionScreen__/graphics/icons/circ_screen_64.png"
+  circuit_screen.icon = "__CircuitConditionScreen__/graphics/icons/circ_screen_64_2.png"
   circuit_screen.icon_size = 64
   circuit_screen.flags = {"placeable-player", "player-creation", "placeable-neutral", "placeable-enemy"}
   circuit_screen.minable = {mining_time = 0.1, result = "circuit-screen"}
-  circuit_screen.collision_box = {{-0.75, -0.75}, {0.75, 0.75}} -- needs tested
-  circuit_screen.selection_box = {{-0.75, -0.75}, {0.75, 0.75}} -- needs to be tested
+  circuit_screen.collision_box = {{-1, -0.40}, {1, 0.40}} -- needs tested
+  circuit_screen.selection_box = {{-1, -0.40}, {1, 0.40}} -- needs to be tested
   circuit_screen.apply_runtime_tint = false
   --circuit_screen.corpse = "__CircuitConditionScreen__/graphics/corpse/attempt1_screen_corpse2_image_64.png"
   circuit_screen.corpse = "small-remnants"
   circuit_screen.dying_explosion = "pump-explosion" -- test explosion
-  circuit_screen.circuit_wire_connection_points = circuit_connector_definitions.create
-(
-  universal_connector_template,
-  {
-    { variation = 12, main_offset = util.by_pixel(12, 12), shadow_offset = util.by_pixel(4.5, -1), show_shadow = true }
-  }
-)
-  --circuit_screen.circuit_wire_connection_points = circuit_connector_definitions["programmable-speaker"].points --test this
-  --circuit_screen.circuit_connector_sprites = circuit_connector_definitions["programmable-speaker"].sprites --test this too
+  circuit_screen.circuit_wire_connection_point = circuit_connector_definitions["circuit-screen"].points
+  circuit_screen.circuit_connector_sprites = circuit_connector_definitions["circuit-screen"].sprites
   circuit_screen.circuit_wire_max_distance = default_circuit_wire_max_distance
   circuit_screen.se_allow_in_space = true
   circuit_screen.water_reflection = 
@@ -52,14 +57,14 @@ empty_sprite = {
     layers =
     {
       {
-        filename = "__CircuitConditionScreen__/graphics/entities/screen.png",
+        filename = "__CircuitConditionScreen__/graphics/entities/screen2_kozep.png",
         priority = "extra-high",
         width = 32,
         height = 32,
         shift = util.by_pixel(0, 0),
         hr_version =
         {
-          filename = "__CircuitConditionScreen__/graphics/entities/screen_hr.png",
+          filename = "__CircuitConditionScreen__/graphics/entities/screen2_hr_kozep.png",
           priority = "extra-high",
           width = 64,
           height = 64,
@@ -72,7 +77,7 @@ empty_sprite = {
         priority = "extra-high",
         width = 32,
         height = 32,
-        shift = util.by_pixel(52.5, -2.5),
+        shift = util.by_pixel(50.5, -2.5),
         draw_as_shadow = true,
         hr_version =
         {
@@ -80,9 +85,9 @@ empty_sprite = {
           priority = "extra-high",
           width = 64,
           height = 64,
-          shift = util.by_pixel(52.75, -3),
+          shift = util.by_pixel(50.75, -3),
           draw_as_shadow = true,
-          scale = 1
+          scale = 0.7
         }
       }
     }
@@ -97,7 +102,7 @@ empty_sprite = {
   {
       type = "item",
       name = "circuit-screen",
-      icon = "__CircuitConditionScreen__/graphics/icons/circ_screen_64.png",
+      icon = "__CircuitConditionScreen__/graphics/icons/circ_screen_64_2.png",
       icon_size = 64,
       flags = {},
       subgroup = "energy-pipe-distribution",

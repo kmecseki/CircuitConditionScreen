@@ -54,19 +54,19 @@ local function create_textbox(cs, surface)
 
     global.cstop[cs.unit_number] = rendering.draw_sprite({
             sprite = "emptysprite",
-            target = {cs.position.x+0.05,cs.position.y-0.25},
+            target = {cs.position.x-0.5,cs.position.y-0.0},
             surface = surface,
-            tint = {r=0.0,  g=0.6,  b=0.0, a=0.99},
-            x_scale = 0.08,
-            y_scale = 0.09,
+            tint = {r=0.2,  g=0.8,  b=0.2, a=0.99},
+            x_scale = 1,
+            y_scale = 1,
             })
     global.csbottom[cs.unit_number] = rendering.draw_sprite({
             sprite = "emptysprite",
-            target = {cs.position.x+0.05,cs.position.y+0.25},
+            target = {cs.position.x+0.5,cs.position.y+0.0},
             surface = surface,
-            tint = {r=1.0,  g=0.0,  b=0.0, a=0.99},
-            x_scale = 0.08,
-            y_scale = 0.09,
+            tint = {r=0.9,  g=0.1,  b=0.1, a=0.99},
+            x_scale = 1,
+            y_scale = 1,
             })
 end
 

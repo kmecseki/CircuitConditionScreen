@@ -3,7 +3,7 @@ data:extend({
         type = "technology",
         name = "circuit-screen",
         icon_size = 512,
-        icon = "__CircuitConditionScreen__/graphics/icons/techrenderednobckg.png",
+        icon = "__CircuitConditionScreen__/graphics/icons/techiconsmall.png",
         effects =
         {
           {

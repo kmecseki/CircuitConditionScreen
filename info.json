@@ -2,10 +2,10 @@
     "name": "CircuitConditionScreen",
     "version": "0.1.0",
     "factorio_version": "1.1",
-    "title": "Circuit Condition Screen",
+    "title": "Circuit Condition Lamp",
     "author": "kmecseki",
     "contact": "",
     "homepage": "",
-    "description": "A display showing the condition of a circuit network."
+    "description": "A lamp showing the condition of a circuit network."
   }
   
