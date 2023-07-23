@@ -64,7 +64,7 @@ local function create_textbox(cs, surface)
             sprite = "emptysprite",
             target = {cs.position.x+0.5,cs.position.y+0.0},
             surface = surface,
-            tint = {r=0.9,  g=0.1,  b=0.1, a=0.99},
+            tint = {r=0.9,  g=0.1,  b=0.1, a=0.85},
             x_scale = 1,
             y_scale = 1,
             })
