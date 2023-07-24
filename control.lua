@@ -11,6 +11,7 @@ local function players_present()
 end
 
 local function signal_is_blank(sigid)
+
     if sigid == nil or (sigid.type == "item" and sigid.name == nil) then
         return true
     else
@@ -30,12 +31,26 @@ local function csupdate()
                     local networkred = cs.get_circuit_network(defines.wire_type.red)
                     local networkgreen = cs.get_circuit_network(defines.wire_type.green)
                     if behavior and behavior['circuit_condition'] then
-                        if behavior.circuit_condition.fulfilled then
+                        local rev = behavior.circuit_condition.fulfilled
+                        if cs.name == "circuit-lamp" then
+                            rev = not rev
+                        end
+                        if rev then
                             rendering.set_sprite(global.cstop[global.csindex], "emptysprite")
                             rendering.set_sprite(global.csbottom[global.csindex], "circuit-cond-Fault")
+                            if cs.name == "circuit-lamp" then
+                                rendering.set_color(global.csbottom[global.csindex],settings.global["lamp-off-color"].value)
+                            --elseif cs.name == "circuit-screen" then
+                            --    rendering.set_color(global.csbottom[global.csindex],settings.global["alarm-on-color"].value)
+                            end                        
                         else
                             rendering.set_sprite(global.cstop[global.csindex], "circuit-cond-OK")
                             rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
+                            if cs.name == "circuit-lamp" then
+                                rendering.set_color(global.cstop[global.csindex],settings.global["lamp-on-color"].value)
+                            --elseif cs.name == "circuit-screen" then
+                            --    rendering.set_color(global.cstop[global.csindex],settings.global["alarm-off-color"].value)
+                            end        
                         end
                         if networkred == nil and networkgreen == nil then
                             rendering.set_sprite(global.csbottom[global.csindex], "emptysprite")
@@ -74,13 +89,12 @@ local function create_textbox(cs, surface)
             sprite = "emptysprite",
             target = {cs.position.x-0.0,cs.position.y-0.0},
             surface = surface,
-            tint = {r=0.2,  g=0.8,  b=0.2, a=0.99},
+            tint = {r=0.1,  g=0.8,  b=0.1, a=0.99},
             x_scale = 1,
             y_scale = 1,
             })
     global.csbottom[cs.unit_number] = rendering.draw_sprite({
             sprite = "emptysprite",
-            --target = {cs.position.x+0.5,cs.position.y+0.0},
             target = {cs.position.x-0.0,cs.position.y+0.0},
             surface = surface,
             tint = {r=0.9,  g=0.1,  b=0.1, a=0.85},
@@ -92,7 +106,7 @@ end
 local function placedcs(placed_entity)
 
     local surface = placed_entity.surface
-    if placed_entity.name=="circuit-screen" then
+    if placed_entity.name=="circuit-screen" or placed_entity.name=="circuit-lamp" then
         global.css[placed_entity.unit_number] = placed_entity
         create_textbox(placed_entity, surface)
         global.csindex = placed_entity.unit_number
@@ -102,7 +116,7 @@ end
 local function register_css()
     rendering.clear("CircuitConditionScreen") 
     for _,surface in pairs(game.surfaces) do
-        for _,cs in pairs(surface.find_entities_filtered({name = "circuit-screen"})) do
+        for _,cs in pairs(surface.find_entities_filtered({name = {"circuit-screen", "circuit-lamp"}})) do
             global.css[cs.unit_number] = cs
             create_textbox(cs, surface)
             global.csindex = cs.unit_number
@@ -114,7 +128,7 @@ local function register_css()
 end
 
 local function removedcs(removed_entity)
-    if removed_entity.name=="circuit-screen" then
+    if removed_entity.name=="circuit-screen" or removed_entity.name=="circuit-lamp" then
         global.css[removed_entity.unit_number] = nil
         rendering.destroy(global.cstop[removed_entity.unit_number])
         rendering.destroy(global.csbottom[removed_entity.unit_number])
@@ -140,18 +154,18 @@ script.on_event(defines.events.on_pre_chunk_deleted, function(event)
       local x = chunk.x
       local y = chunk.y
       local area = {{x*32,y*32},{31+x*32,31+y*32}}
-      for _,ent in pairs(game.get_surface(event.surface_index).find_entities_filtered{name = "circuit-screen",area = area}) do
+      for _,ent in pairs(game.get_surface(event.surface_index).find_entities_filtered{name = {"circuit-screen", "circuit-lamp"},area = area}) do
         removedcs(ent)
       end
     end
   end)
   script.on_event(defines.events.on_pre_surface_cleared,function (event)
-    for _,ent in pairs(game.get_surface(event.surface_index).find_entities_filtered{name = "circuit-screen"}) do
+    for _,ent in pairs(game.get_surface(event.surface_index).find_entities_filtered{name = {"circuit-screen", "circuit-lamp"}}) do
         removedcs(ent)
     end
   end)
   script.on_event(defines.events.on_pre_surface_deleted,function (event)
-    for _,ent in pairs(game.get_surface(event.surface_index).find_entities_filtered{name = "circuit-screen"}) do
+    for _,ent in pairs(game.get_surface(event.surface_index).find_entities_filtered{name = {"circuit-screen", "circuit-lamp"}}) do
         removedcs(ent)
     end
   end)

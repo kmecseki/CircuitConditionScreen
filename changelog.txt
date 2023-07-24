@@ -1,7 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 24 July 2023
+  Features:
+    - Added a second entity that does not raise alarm with customizable colors.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2
 Date: 23 July 2023
-  Features
+  Features:
     - Added glow around the lamp.
   Minor fixes:
     - Lamp turns off when disconnected.

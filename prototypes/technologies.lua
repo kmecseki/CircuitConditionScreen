@@ -9,6 +9,10 @@ data:extend({
           {
             type = "unlock-recipe",
             recipe = "circuit-screen-rec"
+          },
+          {
+            type = "unlock-recipe",
+            recipe = "circuit-lamp-rec"
           }
         },
         prerequisites = {"electronics"},
