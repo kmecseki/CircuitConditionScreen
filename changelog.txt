@@ -1,9 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.3.2
-Date: 25 July 2023
+Version: 0.3.3
+Date: 29 July 2023
   Minor fixes:
-    - Fixed settings locale missing entry.
-    - Code cleanup.
+    - Changed assets to better match the game viewing angle.
+    - Changed default mod settings.
+    - Removed unintented light, that was provided by the lamps when the circuit condition was fulfilled.
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.1
 Date: 24 July 2023

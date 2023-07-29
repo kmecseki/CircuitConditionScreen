@@ -12,24 +12,24 @@ data:extend({
     {
         type = "sprite",
         name = "circuit-cond-Fault",
-        filename = "__CircuitConditionScreen__/graphics/sprites/redlight.png",
+        filename = "__CircuitConditionScreen__/graphics/sprites/redon.png",
         y = 0,
         x = 0,
-        width = 128,
+        width = 64,
         height = 64,
-        scale = 0.5,
+        scale = 0.97,
         draw_as_glow=true,
         apply_runtime_tint = true
     },
     {
         type = "sprite",
         name = "circuit-cond-OK",
-        filename = "__CircuitConditionScreen__/graphics/sprites/greenlight.png",
+        filename = "__CircuitConditionScreen__/graphics/sprites/greenon.png",
         y = 0,
         x = 0,
-        width = 128,
+        width = 64,
         height = 64,
-        scale = 0.5,
+        scale = 0.97,
         draw_as_glow=true,
         apply_runtime_tint = true
     }

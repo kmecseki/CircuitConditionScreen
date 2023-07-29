@@ -56,14 +56,14 @@ empty_sprite = {
     layers =
     {
       {
-        filename = "__CircuitConditionScreen__/graphics/entities/screen2_kozep.png",
+        filename = "__CircuitConditionScreen__/graphics/entities/alarmoff32.png",
         priority = "extra-high",
         width = 32,
         height = 32,
         shift = util.by_pixel(0, 0),
         hr_version =
         {
-          filename = "__CircuitConditionScreen__/graphics/entities/screen2_hr_kozep.png",
+          filename = "__CircuitConditionScreen__/graphics/entities/alarmoff64.png",
           priority = "extra-high",
           width = 64,
           height = 64,
@@ -134,14 +134,14 @@ empty_sprite = {
     layers =
     {
       {
-        filename = "__CircuitConditionScreen__/graphics/entities/bhr3small.png",
+        filename = "__CircuitConditionScreen__/graphics/entities/lampoff32.png",
         priority = "extra-high",
         width = 32,
         height = 32,
         shift = util.by_pixel(0, 0),
         hr_version =
         {
-          filename = "__CircuitConditionScreen__/graphics/entities/bhr3.png",
+          filename = "__CircuitConditionScreen__/graphics/entities/lampoff64.png",
           priority = "extra-high",
           width = 64,
           height = 64,
@@ -169,7 +169,8 @@ empty_sprite = {
       }
     }
   }
-
+  circuit_lamp.light = nil
+  circuit_lamp.light_when_colored = nil
   circuit_lamp.picture_on = empty_sprite
 
 
