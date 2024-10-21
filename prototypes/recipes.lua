@@ -5,12 +5,12 @@ data:extend({
     energy_required = 3,
     enabled = false,
     ingredients = {
-        {"iron-plate", 2},
-        {"copper-cable", 4},
-        {"electronic-circuit",2}
+        {type = "item", name = "iron-plate", amount = 2},
+        {type = "item", name = "copper-cable", amount = 4},
+        {type = "item", name = "electronic-circuit", amount = 2}
     },
     results = {
-        {"circuit-screen", 1}
+        {type = "item", name = "circuit-screen", amount = 1}
     }
 },
 {
@@ -19,12 +19,12 @@ data:extend({
     energy_required = 3,
     enabled = false,
     ingredients = {
-        {"iron-plate", 2},
-        {"copper-cable", 2},
-        {"electronic-circuit",1}
+        {type = "item", name = "iron-plate", amount = 2},
+        {type = "item", name = "copper-cable", amount = 2},
+        {type = "item", name = "electronic-circuit", amount = 1}
     },
     results = {
-        {"circuit-lamp", 1}
+        {type = "item", name = "circuit-lamp", amount = 1}
     }
 }
 })
