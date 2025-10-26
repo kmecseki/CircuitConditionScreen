@@ -19,6 +19,16 @@ local function signal_is_blank(sigid)
     end
 end
 
+local function move_light(cs)
+    if storage.cstop[storage.csindex] then
+          storage.cstop[storage.csindex].target = { cs.position.x - 0.38,cs.position.y - 0.05 }
+    end
+    if storage.csbottom[storage.csindex] then
+          storage.csbottom[storage.csindex].target = { cs.position.x + 0.38,cs.position.y - 0.08 }
+    end
+
+end
+
 local function csupdate()
 
     if next(storage.css)~=nil then
@@ -31,6 +41,11 @@ local function csupdate()
                     local networkred = cs.get_circuit_network(defines.wire_connector_id.circuit_red)
                     local networkgreen = cs.get_circuit_network(defines.wire_connector_id.circuit_green)
                     if behavior and behavior['circuit_condition'] then
+                        if storage.cstop[storage.csindex] ~= nil then
+                            if storage.cstop[storage.csindex].target ~= { cs.position.x - 0.38,cs.position.y - 0.05 } then
+                                move_light(cs)
+                            end
+                        end
                         local rev = behavior.circuit_condition.fulfilled
                         if cs.name == "circuit-lamp" then
                             rev = not rev
@@ -41,13 +56,13 @@ local function csupdate()
                             storage.csbottom[storage.csindex].sprite = "circuit-cond-Fault"
                             if cs.name == "circuit-lamp" then
                                 storage.csbottom[storage.csindex].color = settings.global["lamp-off-color"].value
-                            end                        
+                            end
                         else
                             storage.cstop[storage.csindex].sprite = "circuit-cond-OK"
                             storage.csbottom[storage.csindex].sprite = "emptysprite"
                             if cs.name == "circuit-lamp" then
                                 storage.cstop[storage.csindex].color = settings.global["lamp-on-color"].value
-                            end        
+                            end
                         end
                         if networkred == nil and networkgreen == nil then
                             storage.csbottom[storage.csindex].sprite = "emptysprite"
