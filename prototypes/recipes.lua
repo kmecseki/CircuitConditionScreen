@@ -1,7 +1,7 @@
 data:extend({
     {
     type = "recipe",
-    name = "circuit-screen-rec",
+    name = "circuit-screen",
     energy_required = 3,
     enabled = false,
     ingredients = {
@@ -15,7 +15,7 @@ data:extend({
 },
 {
     type = "recipe",
-    name = "circuit-lamp-rec",
+    name = "circuit-lamp",
     energy_required = 3,
     enabled = false,
     ingredients = {

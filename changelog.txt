@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.1
+Date: 25 November 2025
+  Minor fixes:
+    - Changed recipe name to appear correctly in Factoripedia.
+---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 26 October 2025
   Minor update:

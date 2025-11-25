@@ -8,11 +8,11 @@ data:extend({
   {
     {
       type = "unlock-recipe",
-      recipe = "circuit-screen-rec"
+      recipe = "circuit-screen"
     },
     {
       type = "unlock-recipe",
-      recipe = "circuit-lamp-rec"
+      recipe = "circuit-lamp"
     }
   },
   prerequisites = {"electronics"},
